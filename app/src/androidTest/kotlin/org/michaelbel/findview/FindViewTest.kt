@@ -30,7 +30,7 @@ class FindViewTest {
         container.addView(button2)
         root.addView(container)
 
-        val result = root.findViews4 { it is Button && it.isEnabled }
+        val result = root.findViews { it is Button && it.isEnabled }
 
         assertEquals(1, result.size)
         assertSame(button1, result[0])
