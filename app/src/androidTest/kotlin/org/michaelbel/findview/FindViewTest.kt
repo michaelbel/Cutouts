@@ -18,7 +18,7 @@ class FindViewTest {
 
     @Test
     @UiThreadTest
-    fun returnsOnlyMatchingTypeAndPredicate() {
+    fun findViewTest() {
         val root = LinearLayout(context)
         val button1 = Button(context).apply { isEnabled = true }
         val textView = TextView(context).apply { isVisible = true }
