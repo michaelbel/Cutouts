@@ -20,13 +20,15 @@ class FindViewTest {
     @UiThreadTest
     fun findViewTest() {
         val root = LinearLayout(context)
+
         val button1 = Button(context).apply { isEnabled = true }
+        root.addView(button1)
+
         val textView = TextView(context).apply { isVisible = true }
+        root.addView(textView)
+
         val container = FrameLayout(context)
         val button2 = Button(context).apply { isEnabled = false }
-
-        root.addView(button1)
-        root.addView(textView)
         container.addView(button2)
         root.addView(container)
 
