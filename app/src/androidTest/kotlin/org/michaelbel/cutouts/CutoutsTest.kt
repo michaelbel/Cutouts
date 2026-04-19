@@ -1,4 +1,4 @@
-package org.michaelbel.findview
+package org.michaelbel.cutouts
 
 import android.content.Context
 import android.widget.Button
@@ -12,7 +12,7 @@ import org.junit.Assert.assertEquals
 import org.junit.Assert.assertSame
 import org.junit.Test
 
-class FindViewTest {
+class CutoutsTest {
 
     private val context = ApplicationProvider.getApplicationContext<Context>()
 

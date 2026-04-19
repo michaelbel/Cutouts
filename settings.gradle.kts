@@ -19,5 +19,5 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "FindView"
+rootProject.name = "Cutouts"
 include(":app")

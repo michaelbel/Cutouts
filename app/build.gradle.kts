@@ -2,7 +2,6 @@ import java.nio.charset.StandardCharsets
 
 plugins {
     alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
 }
 
 private val gitCommitsCount: Int by lazy {
@@ -24,11 +23,11 @@ kotlin {
 }
 
 android {
-    namespace = "org.michaelbel.findview"
+    namespace = "org.michaelbel.cutouts"
     compileSdk = libs.versions.compile.sdk.get().toInt()
 
     defaultConfig {
-        applicationId = "org.michaelbel.findview"
+        applicationId = "org.michaelbel.cutouts"
         minSdk = libs.versions.min.sdk.get().toInt()
         targetSdk = libs.versions.target.sdk.get().toInt()
         versionCode = gitCommitsCount
@@ -38,7 +37,7 @@ android {
 
     signingConfigs {
         getByName("debug") {
-            keyAlias = "findview"
+            keyAlias = "cutouts"
             keyPassword = "password"
             storeFile = rootProject.file(".github/debug-key.jks")
             storePassword = "password"
@@ -57,7 +56,7 @@ android {
 }
 
 base {
-    archivesName.set("FindView-v${android.defaultConfig.versionName}(${android.defaultConfig.versionCode})")
+    archivesName.set("Cutouts-v${android.defaultConfig.versionName}(${android.defaultConfig.versionCode})")
 }
 
 dependencies {
