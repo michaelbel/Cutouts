@@ -2,6 +2,7 @@ import java.nio.charset.StandardCharsets
 
 plugins {
     alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.compose)
 }
 
 private val gitCommitsCount: Int by lazy {
@@ -37,7 +38,7 @@ android {
 
     signingConfigs {
         getByName("debug") {
-            keyAlias = "cutouts"
+            keyAlias = "template"
             keyPassword = "password"
             storeFile = rootProject.file(".github/debug-key.jks")
             storePassword = "password"
@@ -51,7 +52,7 @@ android {
     }
 
     buildFeatures {
-        viewBinding = true
+        compose = true
     }
 }
 
@@ -60,6 +61,13 @@ base {
 }
 
 dependencies {
+    implementation(libs.compose.ui)
+    debugImplementation(libs.compose.ui.tooling)
+    implementation(libs.compose.ui.tooling.preview)
+    implementation(libs.compose.material3)
+    implementation(libs.compose.material.icons.extended)
+    implementation(libs.compose.foundation)
+    implementation(libs.androidx.activity.compose)
     implementation(libs.google.material)
     implementation(libs.androidx.core.splashscreen)
     androidTestImplementation(libs.androidx.test.rules)
