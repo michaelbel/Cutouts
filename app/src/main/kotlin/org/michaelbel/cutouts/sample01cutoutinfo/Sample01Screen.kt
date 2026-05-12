@@ -5,6 +5,8 @@ package org.michaelbel.cutouts.sample01cutoutinfo
 import android.graphics.Rect
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.displayCutout
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
@@ -25,8 +27,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.unit.Density
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.core.view.ViewCompat
 import org.michaelbel.cutouts.SectionLabel
 
@@ -34,9 +38,18 @@ import org.michaelbel.cutouts.SectionLabel
 fun Sample01Screen(onBack: () -> Unit) {
     BackHandler(onBack = onBack)
 
+    val density = LocalDensity.current
+    val layoutDirection = LocalLayoutDirection.current
+
+    val cutoutTop = WindowInsets.displayCutout.getTop(density)
+    val cutoutBottom = WindowInsets.displayCutout.getBottom(density)
+    val cutoutLeft = WindowInsets.displayCutout.getLeft(density, layoutDirection)
+    val cutoutRight = WindowInsets.displayCutout.getRight(density, layoutDirection)
+
+    val hasDisplayCutout = cutoutTop > 0 || cutoutBottom > 0 || cutoutLeft > 0 || cutoutRight > 0
+
 
     val view = LocalView.current
-    val density = LocalDensity.current
     val windowInsets = remember(view) { ViewCompat.getRootWindowInsets(view) }
     val displayCutout = windowInsets?.displayCutout
     val safeInsets = displayCutout?.let {
@@ -79,7 +92,27 @@ fun Sample01Screen(onBack: () -> Unit) {
             item {
                 ListItem(
                     headlineContent = { Text("Вырез присутствует") },
-                    trailingContent = { Text(if (displayCutout != null) "да" else "нет") },
+                    trailingContent = { Text(if (hasDisplayCutout) "ДА" else "НЕТ") },
+                    colors = ListItemDefaults.colors(
+                        containerColor = MaterialTheme.colorScheme.surfaceContainerHighest
+                    )
+                )
+            }
+
+
+
+            item {
+                val position = displayCutout?.let {
+                    buildList {
+                        if (it.safeInsetTop > 0) add("СВЕРХУ")
+                        if (it.safeInsetBottom > 0) add("СНИЗУ")
+                        if (it.safeInsetLeft > 0) add("СЛЕВА")
+                        if (it.safeInsetRight > 0) add("СПРАВА")
+                    }.joinToString(", ")
+                } ?: "—"
+                ListItem(
+                    headlineContent = { Text("Расположение выреза") },
+                    trailingContent = { Text(position) },
                     colors = ListItemDefaults.colors(
                         containerColor = MaterialTheme.colorScheme.surfaceContainerHighest
                     )
