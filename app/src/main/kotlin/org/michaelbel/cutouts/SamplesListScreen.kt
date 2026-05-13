@@ -30,14 +30,15 @@ private data class Sample(
 )
 
 private val samples = listOf(
-    Sample(1, "Информация о вырезе дисплея", "safeInsets · boundingRects · waterfallInsets"),
-    Sample(2, "Режим по умолчанию", "LAYOUT_IN_DISPLAY_CUTOUT_MODE_DEFAULT"),
-    Sample(3, "Режим коротких краёв", "LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES"),
-    Sample(4, "Режим «Никогда»", "LAYOUT_IN_DISPLAY_CUTOUT_MODE_NEVER"),
-    Sample(5, "Режим «Всегда»", "LAYOUT_IN_DISPLAY_CUTOUT_MODE_ALWAYS"),
-    Sample(6, "Безопасные отступы рисования", "Modifier.safeDrawingPadding()"),
-    Sample(7, "Отступы выреза дисплея", "WindowInsets.displayCutout"),
-    Sample(8, "Отступы водопада", "WindowInsets.waterfall"),
+    Sample(1, "Информация о вырезе дисплея", "WindowInsets.displayCutout"),
+    Sample(2, "Отступы водопада", "WindowInsets.waterfall"),
+    Sample(3, "Режим по умолчанию", "LAYOUT_IN_DISPLAY_CUTOUT_MODE_DEFAULT"),
+    Sample(4, "Режим коротких краёв", "LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES"),
+    Sample(5, "Режим «Никогда»", "LAYOUT_IN_DISPLAY_CUTOUT_MODE_NEVER"),
+    Sample(6, "Режим «Всегда»", "LAYOUT_IN_DISPLAY_CUTOUT_MODE_ALWAYS"),
+    Sample(7, "Безопасные отступы рисования", "Modifier.safeDrawingPadding()"),
+    Sample(8, "Отступы выреза дисплея", "WindowInsets.displayCutout"),
+    Sample(9, "Отступы водопада (визуализация)", "WindowInsets.waterfall"),
 )
 
 @OptIn(ExperimentalMaterial3Api::class)

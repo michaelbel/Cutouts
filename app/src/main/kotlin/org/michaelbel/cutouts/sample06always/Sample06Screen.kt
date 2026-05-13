@@ -1,4 +1,4 @@
-package org.michaelbel.cutouts.sample04never
+package org.michaelbel.cutouts.sample06always
 
 import android.app.Activity
 import android.view.WindowManager
@@ -29,14 +29,14 @@ import org.michaelbel.cutouts.WhenToUseCard
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Sample04Screen(onBack: () -> Unit) {
+fun Sample06Screen(onBack: () -> Unit) {
     BackHandler(onBack = onBack)
 
     val window = (LocalContext.current as Activity).window
     DisposableEffect(Unit) {
         val prev = window.attributes.layoutInDisplayCutoutMode
         window.attributes = window.attributes.apply {
-            layoutInDisplayCutoutMode = WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_NEVER
+            layoutInDisplayCutoutMode = WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_ALWAYS
         }
         onDispose {
             window.attributes = window.attributes.apply {
@@ -48,7 +48,7 @@ fun Sample04Screen(onBack: () -> Unit) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Режим «Никогда»") },
+                title = { Text("Режим «Всегда»") },
                 navigationIcon = {
                     IconButton(onClick = onBack) {
                         Icon(
@@ -75,26 +75,26 @@ fun Sample04Screen(onBack: () -> Unit) {
             ),
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
-            item { ConstantBadge("LAYOUT_IN_DISPLAY_CUTOUT_MODE_NEVER") }
+            item { ConstantBadge("LAYOUT_IN_DISPLAY_CUTOUT_MODE_ALWAYS") }
             item {
                 DescriptionCard(
-                    description = "Окно никогда не расширяется в зону выреза дисплея. Окно всегда отображается " +
-                        "с отступами (letterbox или pillarbox), полностью избегая зоны выреза. " +
-                        "Контент никогда не отрисовывается за вырезом."
+                    description = "Добавлено в API 30. Окно всегда расширяется в зону выреза дисплея, даже " +
+                        "в оконном режиме (не полноэкранном). Контент может отрисовываться под вырезом. " +
+                        "Необходимо использовать WindowInsets для отступа интерактивных элементов от выреза."
                 )
             }
             item {
                 WhenToUseCard(
                     items = listOf(
-                        "Интерфейс, который не может безопасно адаптироваться к вырезу",
-                        "Полноэкранное воспроизведение видео — letterbox предпочтительнее перекрытия контента",
-                        "Игры, где недопустим любой пиксель под вырезом",
-                        "Унаследованные приложения, не рассчитанные на edge-to-edge разметку",
-                        "Контент, который нельзя обрезать или перекрывать аппаратными элементами",
+                        "Доступно с API 30 (Android 11) и выше — minSdk 34 гарантирует поддержку",
+                        "Контент заходит в зону выреза даже в режиме разделённого экрана / оконном режиме",
+                        "Самый агрессивный режим — контент всегда занимает весь экран включая зону выреза",
+                        "Всегда используйте WindowInsets.displayCutout для защиты нажимаемых элементов",
+                        "Полезно для отрисовки фонов, градиентов и декоративных элементов от края до края",
                     )
                 )
             }
-            item { CutoutDiagram(mode = "NEVER") }
+            item { CutoutDiagram(mode = "ALWAYS") }
         }
     }
 }

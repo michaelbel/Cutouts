@@ -1,4 +1,4 @@
-package org.michaelbel.cutouts.sample06safedrawing
+package org.michaelbel.cutouts.sample07safedrawing
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
@@ -45,7 +45,7 @@ import org.michaelbel.cutouts.InfoRow
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Sample06Screen(onBack: () -> Unit) {
+fun Sample07Screen(onBack: () -> Unit) {
     BackHandler(onBack = onBack)
 
     val density = LocalDensity.current

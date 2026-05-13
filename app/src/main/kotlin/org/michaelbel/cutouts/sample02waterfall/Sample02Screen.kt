@@ -1,15 +1,12 @@
-@file:OptIn(
-    ExperimentalMaterial3Api::class,
-    ExperimentalMaterial3ExpressiveApi::class
-)
+@file:OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3ExpressiveApi::class)
 
-package org.michaelbel.cutouts.sample01cutoutinfo
+package org.michaelbel.cutouts.sample02waterfall
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.displayCutout
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.waterfall
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
@@ -32,7 +29,7 @@ import androidx.compose.ui.platform.LocalLayoutDirection
 import org.michaelbel.cutouts.SectionLabel
 
 @Composable
-fun Sample01Screen(
+fun Sample02Screen(
     onBack: () -> Unit
 ) {
     BackHandler(onBack = onBack)
@@ -40,14 +37,14 @@ fun Sample01Screen(
     val density = LocalDensity.current
     val layoutDirection = LocalLayoutDirection.current
 
-    val displayCutout = WindowInsets.displayCutout
+    val waterfall = WindowInsets.waterfall
 
-    val cutoutTop = displayCutout.getTop(density)
-    val cutoutBottom = displayCutout.getBottom(density)
-    val cutoutLeft = displayCutout.getLeft(density, layoutDirection)
-    val cutoutRight = displayCutout.getRight(density, layoutDirection)
+    val waterfallTop = waterfall.getTop(density)
+    val waterfallBottom = waterfall.getBottom(density)
+    val waterfallLeft = waterfall.getLeft(density, layoutDirection)
+    val waterfallRight = waterfall.getRight(density, layoutDirection)
 
-    val hasDisplayCutout = cutoutTop > 0 || cutoutBottom > 0 || cutoutLeft > 0 || cutoutRight > 0
+    val hasWaterfall = waterfallTop > 0 || waterfallBottom > 0 || waterfallLeft > 0 || waterfallRight > 0
 
     val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()
 
@@ -55,7 +52,7 @@ fun Sample01Screen(
         modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
             TopAppBar(
-                title = { Text("Информация о вырезе") },
+                title = { Text("Отступы водопада") },
                 navigationIcon = {
                     IconButton(onClick = onBack) {
                         Icon(
@@ -82,66 +79,50 @@ fun Sample01Screen(
             item { SectionLabel("Обнаружение") }
             item {
                 ListItem(
-                    headlineContent = { Text("Вырез присутствует") },
-                    trailingContent = { Text(if (hasDisplayCutout) "ДА" else "НЕТ") },
-                    colors = ListItemDefaults.colors(
-                        containerColor = MaterialTheme.colorScheme.surfaceContainerHighest
-                    )
-                )
-            }
-            item {
-                val position = when {
-                    cutoutTop > 0 -> "СВЕРХУ"
-                    cutoutBottom > 0 -> "СНИЗУ"
-                    cutoutLeft > 0 -> "СЛЕВА"
-                    cutoutRight > 0 -> "СПРАВА"
-                    else -> "—"
-                }
-                ListItem(
-                    headlineContent = { Text("Расположение выреза") },
-                    trailingContent = { Text(position) },
+                    headlineContent = { Text("Водопад присутствует") },
+                    trailingContent = { Text(if (hasWaterfall) "ДА" else "НЕТ") },
                     colors = ListItemDefaults.colors(
                         containerColor = MaterialTheme.colorScheme.surfaceContainerHighest
                     )
                 )
             }
 
-            item { SectionLabel("Безопасные отступы выреза") }
+            item { SectionLabel("Отступы водопада") }
             item {
-                val cutoutTopDp = with(density) { cutoutTop.toDp() }
+                val topDp = with(density) { waterfallTop.toDp() }
                 ListItem(
                     headlineContent = { Text("Сверху") },
-                    trailingContent = { Text("$cutoutTop px  ($cutoutTopDp)") },
+                    trailingContent = { Text("$waterfallTop px  ($topDp)") },
                     colors = ListItemDefaults.colors(
                         containerColor = MaterialTheme.colorScheme.surfaceContainerHighest
                     )
                 )
             }
             item {
-                val cutoutBottomDp = with(density) { cutoutBottom.toDp() }
+                val bottomDp = with(density) { waterfallBottom.toDp() }
                 ListItem(
                     headlineContent = { Text("Снизу") },
-                    trailingContent = { Text("$cutoutBottom px  ($cutoutBottomDp)") },
+                    trailingContent = { Text("$waterfallBottom px  ($bottomDp)") },
                     colors = ListItemDefaults.colors(
                         containerColor = MaterialTheme.colorScheme.surfaceContainerHighest
                     )
                 )
             }
             item {
-                val cutoutLeftDp = with(density) { cutoutLeft.toDp() }
+                val leftDp = with(density) { waterfallLeft.toDp() }
                 ListItem(
                     headlineContent = { Text("Слева") },
-                    trailingContent = { Text("$cutoutLeft px  ($cutoutLeftDp)") },
+                    trailingContent = { Text("$waterfallLeft px  ($leftDp)") },
                     colors = ListItemDefaults.colors(
                         containerColor = MaterialTheme.colorScheme.surfaceContainerHighest
                     )
                 )
             }
             item {
-                val cutoutRightDp = with(density) { cutoutRight.toDp() }
+                val rightDp = with(density) { waterfallRight.toDp() }
                 ListItem(
                     headlineContent = { Text("Справа") },
-                    trailingContent = { Text("$cutoutRight px  ($cutoutRightDp)") },
+                    trailingContent = { Text("$waterfallRight px  ($rightDp)") },
                     colors = ListItemDefaults.colors(
                         containerColor = MaterialTheme.colorScheme.surfaceContainerHighest
                     )

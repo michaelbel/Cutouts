@@ -10,13 +10,14 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import org.michaelbel.cutouts.sample01cutoutinfo.Sample01Screen
-import org.michaelbel.cutouts.sample02default.Sample02Screen
-import org.michaelbel.cutouts.sample03shortedges.Sample03Screen
-import org.michaelbel.cutouts.sample04never.Sample04Screen
-import org.michaelbel.cutouts.sample05always.Sample05Screen
-import org.michaelbel.cutouts.sample06safedrawing.Sample06Screen
-import org.michaelbel.cutouts.sample07cutoutinsets.Sample07Screen
-import org.michaelbel.cutouts.sample08waterfall.Sample08Screen
+import org.michaelbel.cutouts.sample02waterfall.Sample02Screen
+import org.michaelbel.cutouts.sample03default.Sample03Screen
+import org.michaelbel.cutouts.sample04shortedges.Sample04Screen
+import org.michaelbel.cutouts.sample05never.Sample05Screen
+import org.michaelbel.cutouts.sample06always.Sample06Screen
+import org.michaelbel.cutouts.sample07safedrawing.Sample07Screen
+import org.michaelbel.cutouts.sample08cutoutinsets.Sample08Screen
+import org.michaelbel.cutouts.sample09waterfall.Sample09Screen
 
 class MainActivity : ComponentActivity() {
 
@@ -37,6 +38,7 @@ class MainActivity : ComponentActivity() {
                     6 -> Sample06Screen(onBack = { selectedSample = 0 })
                     7 -> Sample07Screen(onBack = { selectedSample = 0 })
                     8 -> Sample08Screen(onBack = { selectedSample = 0 })
+                    9 -> Sample09Screen(onBack = { selectedSample = 0 })
                 }
             }
         }
