@@ -3,7 +3,7 @@
     ExperimentalMaterial3ExpressiveApi::class
 )
 
-package org.michaelbel.cutouts.sample01cutoutinfo
+package org.michaelbel.cutouts.sample01_CutoutInfo
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Arrangement

@@ -1,4 +1,4 @@
-package org.michaelbel.cutouts.sample07safedrawing
+package org.michaelbel.cutouts.sample07_SafeDrawing
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background

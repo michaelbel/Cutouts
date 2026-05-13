@@ -1,4 +1,4 @@
-package org.michaelbel.cutouts.sample08cutoutinsets
+package org.michaelbel.cutouts.sample08_CutoutInsets
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background

@@ -1,4 +1,4 @@
-package org.michaelbel.cutouts.sample03default
+package org.michaelbel.cutouts.sample06_Always
 
 import android.app.Activity
 import android.view.WindowManager
@@ -23,7 +23,6 @@ import androidx.compose.runtime.DisposableEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
-import org.michaelbel.cutouts.BulletPoint
 import org.michaelbel.cutouts.ConstantBadge
 import org.michaelbel.cutouts.CutoutDiagram
 import org.michaelbel.cutouts.DescriptionCard
@@ -31,14 +30,14 @@ import org.michaelbel.cutouts.WhenToUseCard
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Sample03Screen(onBack: () -> Unit) {
+fun Sample06Screen(onBack: () -> Unit) {
     BackHandler(onBack = onBack)
 
     val window = (LocalContext.current as Activity).window
     DisposableEffect(Unit) {
         val prev = window.attributes.layoutInDisplayCutoutMode
         window.attributes = window.attributes.apply {
-            layoutInDisplayCutoutMode = WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_DEFAULT
+            layoutInDisplayCutoutMode = WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_ALWAYS
         }
         onDispose {
             window.attributes = window.attributes.apply {
@@ -50,7 +49,7 @@ fun Sample03Screen(onBack: () -> Unit) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Режим по умолчанию") },
+                title = { Text("Режим «Всегда»") },
                 navigationIcon = {
                     IconButton(onClick = onBack) {
                         Icon(
@@ -77,25 +76,26 @@ fun Sample03Screen(onBack: () -> Unit) {
             ),
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
-            item { ConstantBadge("LAYOUT_IN_DISPLAY_CUTOUT_MODE_DEFAULT") }
+            item { ConstantBadge("LAYOUT_IN_DISPLAY_CUTOUT_MODE_ALWAYS") }
             item {
                 DescriptionCard(
-                    description = "Поведение по умолчанию. Окно может расширяться или не расширяться в зону " +
-                        "выреза дисплея в зависимости от конфигурации системы и окна. В портретном режиме при " +
-                        "видимых системных панелях контент отображается с отступом, чтобы не перекрывать вырез."
+                    description = "Добавлено в API 30. Окно всегда расширяется в зону выреза дисплея, даже " +
+                        "в оконном режиме (не полноэкранном). Контент может отрисовываться под вырезом. " +
+                        "Необходимо использовать WindowInsets для отступа интерактивных элементов от выреза."
                 )
             }
             item {
                 WhenToUseCard(
                     items = listOf(
-                        "Портрет со строкой состояния: контент не заходит в вырез",
-                        "Альбомный режим со строкой состояния: контент избегает обеих сторон",
-                        "Полноэкранный режим (строка скрыта): контент может зайти в вырез",
-                        "Лучшая отправная точка для большинства приложений — явная обработка не нужна",
+                        "Доступно с API 30 (Android 11) и выше — minSdk 34 гарантирует поддержку",
+                        "Контент заходит в зону выреза даже в режиме разделённого экрана / оконном режиме",
+                        "Самый агрессивный режим — контент всегда занимает весь экран включая зону выреза",
+                        "Всегда используйте WindowInsets.displayCutout для защиты нажимаемых элементов",
+                        "Полезно для отрисовки фонов, градиентов и декоративных элементов от края до края",
                     )
                 )
             }
-            item { CutoutDiagram(mode = "DEFAULT") }
+            item { CutoutDiagram(mode = "ALWAYS") }
         }
     }
 }

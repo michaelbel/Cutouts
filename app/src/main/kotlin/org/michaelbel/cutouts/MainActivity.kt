@@ -9,14 +9,14 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import org.michaelbel.cutouts.sample01cutoutinfo.Sample01Screen
-import org.michaelbel.cutouts.sample02waterfall.Sample02Screen
-import org.michaelbel.cutouts.sample03default.Sample03Screen
-import org.michaelbel.cutouts.sample04shortedges.Sample04Screen
-import org.michaelbel.cutouts.sample05never.Sample05Screen
-import org.michaelbel.cutouts.sample06always.Sample06Screen
-import org.michaelbel.cutouts.sample07safedrawing.Sample07Screen
-import org.michaelbel.cutouts.sample08cutoutinsets.Sample08Screen
+import org.michaelbel.cutouts.sample01_CutoutInfo.Sample01Screen
+import org.michaelbel.cutouts.sample02_Waterfall.Sample02Screen
+import org.michaelbel.cutouts.sample03_Default.Sample03Screen
+import org.michaelbel.cutouts.sample04_ShortEdges.Sample04Screen
+import org.michaelbel.cutouts.sample05_Never.Sample05Screen
+import org.michaelbel.cutouts.sample06_Always.Sample06Screen
+import org.michaelbel.cutouts.sample07_SafeDrawing.Sample07Screen
+import org.michaelbel.cutouts.sample08_CutoutInsets.Sample08Screen
 
 class MainActivity : ComponentActivity() {
 

@@ -1,4 +1,4 @@
-package org.michaelbel.cutouts.sample05never
+package org.michaelbel.cutouts.sample04_ShortEdges
 
 import android.app.Activity
 import android.view.WindowManager
@@ -30,14 +30,14 @@ import org.michaelbel.cutouts.WhenToUseCard
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Sample05Screen(onBack: () -> Unit) {
+fun Sample04Screen(onBack: () -> Unit) {
     BackHandler(onBack = onBack)
 
     val window = (LocalContext.current as Activity).window
     DisposableEffect(Unit) {
         val prev = window.attributes.layoutInDisplayCutoutMode
         window.attributes = window.attributes.apply {
-            layoutInDisplayCutoutMode = WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_NEVER
+            layoutInDisplayCutoutMode = WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES
         }
         onDispose {
             window.attributes = window.attributes.apply {
@@ -49,7 +49,7 @@ fun Sample05Screen(onBack: () -> Unit) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Режим «Никогда»") },
+                title = { Text("Режим коротких краёв") },
                 navigationIcon = {
                     IconButton(onClick = onBack) {
                         Icon(
@@ -76,26 +76,26 @@ fun Sample05Screen(onBack: () -> Unit) {
             ),
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
-            item { ConstantBadge("LAYOUT_IN_DISPLAY_CUTOUT_MODE_NEVER") }
+            item { ConstantBadge("LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES") }
             item {
                 DescriptionCard(
-                    description = "Окно никогда не расширяется в зону выреза дисплея. Окно всегда отображается " +
-                        "с отступами (letterbox или pillarbox), полностью избегая зоны выреза. " +
-                        "Контент никогда не отрисовывается за вырезом."
+                    description = "Окно может расширяться в зону выреза по коротким краям экрана (вверх и вниз " +
+                        "в портретном режиме). Контент может отрисовываться под вырезом. " +
+                        "Используйте WindowInsets.displayCutout, чтобы важные элементы интерфейса не попадали в эту зону."
                 )
             }
             item {
                 WhenToUseCard(
                     items = listOf(
-                        "Интерфейс, который не может безопасно адаптироваться к вырезу",
-                        "Полноэкранное воспроизведение видео — letterbox предпочтительнее перекрытия контента",
-                        "Игры, где недопустим любой пиксель под вырезом",
-                        "Унаследованные приложения, не рассчитанные на edge-to-edge разметку",
-                        "Контент, который нельзя обрезать или перекрывать аппаратными элементами",
+                        "Портрет: контент может заходить за вырезы сверху и снизу",
+                        "Альбомный режим: контент заходит в вырез короткого края (обычно сверху)",
+                        "Применяется независимо от видимости системных панелей",
+                        "Всегда используйте отступ WindowInsets.displayCutout для интерактивных элементов",
+                        "Идеально для иммерсивного полноэкранного режима с чёлкой или отверстием в экране",
                     )
                 )
             }
-            item { CutoutDiagram(mode = "NEVER") }
+            item { CutoutDiagram(mode = "SHORT_EDGES") }
         }
     }
 }

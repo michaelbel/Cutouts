@@ -3,7 +3,7 @@
     ExperimentalMaterial3ExpressiveApi::class
 )
 
-package org.michaelbel.cutouts.sample02waterfall
+package org.michaelbel.cutouts.sample02_Waterfall
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Arrangement
