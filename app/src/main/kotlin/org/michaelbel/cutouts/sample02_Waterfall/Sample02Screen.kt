@@ -28,7 +28,6 @@ import org.michaelbel.cutouts.SectionLabel
 
 @Composable
 fun Sample02Screen() {
-
     val density = LocalDensity.current
     val layoutDirection = LocalLayoutDirection.current
 

@@ -24,10 +24,8 @@ import org.michaelbel.cutouts.CutoutDiagram
 import org.michaelbel.cutouts.DescriptionCard
 import org.michaelbel.cutouts.WhenToUseCard
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Sample03Screen() {
-
     val window = (LocalContext.current as Activity).window
     DisposableEffect(Unit) {
         val prev = window.attributes.layoutInDisplayCutoutMode

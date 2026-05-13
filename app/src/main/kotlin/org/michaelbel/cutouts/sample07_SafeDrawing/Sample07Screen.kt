@@ -39,10 +39,8 @@ import org.michaelbel.cutouts.ConstantBadge
 import org.michaelbel.cutouts.InfoCard
 import org.michaelbel.cutouts.InfoRow
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Sample07Screen() {
-
     val density = LocalDensity.current
     val safeDrawingInsets = WindowInsets.safeDrawing
     val topDp = with(density) { safeDrawingInsets.getTop(density).toDp() }
