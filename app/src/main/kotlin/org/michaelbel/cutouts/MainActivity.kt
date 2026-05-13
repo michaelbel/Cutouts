@@ -60,14 +60,14 @@ class MainActivity : ComponentActivity() {
                     else -> {
                         BackHandler { selectedSample = null }
                         when (selectedSample) {
-                            1 -> Sample01Screen(onBack = { selectedSample = null })
-                            2 -> Sample02Screen(onBack = { selectedSample = null })
-                            3 -> Sample03Screen(onBack = { selectedSample = null })
-                            4 -> Sample04Screen(onBack = { selectedSample = null })
-                            5 -> Sample05Screen(onBack = { selectedSample = null })
-                            6 -> Sample06Screen(onBack = { selectedSample = null })
-                            7 -> Sample07Screen(onBack = { selectedSample = null })
-                            8 -> Sample08Screen(onBack = { selectedSample = null })
+                            1 -> Sample01Screen()
+                            2 -> Sample02Screen()
+                            3 -> Sample03Screen()
+                            4 -> Sample04Screen()
+                            5 -> Sample05Screen()
+                            6 -> Sample06Screen()
+                            7 -> Sample07Screen()
+                            8 -> Sample08Screen()
                         }
                     }
                 }

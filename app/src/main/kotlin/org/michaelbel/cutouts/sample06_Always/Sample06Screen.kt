@@ -2,17 +2,12 @@ package org.michaelbel.cutouts.sample06_Always
 
 import android.app.Activity
 import android.view.WindowManager
-import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.plus
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -30,8 +25,7 @@ import org.michaelbel.cutouts.WhenToUseCard
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Sample06Screen(onBack: () -> Unit) {
-    BackHandler(onBack = onBack)
+fun Sample06Screen() {
 
     val window = (LocalContext.current as Activity).window
     DisposableEffect(Unit) {
@@ -50,18 +44,9 @@ fun Sample06Screen(onBack: () -> Unit) {
         topBar = {
             TopAppBar(
                 title = { Text("Режим «Всегда»") },
-                navigationIcon = {
-                    IconButton(onClick = onBack) {
-                        Icon(
-                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                            contentDescription = "Назад"
-                        )
-                    }
-                },
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = MaterialTheme.colorScheme.primary,
                     titleContentColor = MaterialTheme.colorScheme.onPrimary,
-                    navigationIconContentColor = MaterialTheme.colorScheme.onPrimary,
                 )
             )
         }
