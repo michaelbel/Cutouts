@@ -35,7 +35,9 @@ import org.michaelbel.cutouts.SectionLabel
 fun Sample01Screen(
     onBack: () -> Unit
 ) {
-    BackHandler(onBack = onBack)
+    BackHandler(
+        onBack = onBack
+    )
 
     val density = LocalDensity.current
     val layoutDirection = LocalLayoutDirection.current
@@ -57,7 +59,9 @@ fun Sample01Screen(
             TopAppBar(
                 title = { Text("Информация о вырезе") },
                 navigationIcon = {
-                    IconButton(onClick = onBack) {
+                    IconButton(
+                        onClick = onBack
+                    ) {
                         Icon(
                             imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                             contentDescription = null
@@ -105,7 +109,6 @@ fun Sample01Screen(
                     )
                 )
             }
-
             item { SectionLabel("Безопасные отступы выреза") }
             item {
                 val cutoutTopDp = with(density) { cutoutTop.toDp() }

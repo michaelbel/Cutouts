@@ -1,4 +1,7 @@
-@file:OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3ExpressiveApi::class)
+@file:OptIn(
+    ExperimentalMaterial3Api::class,
+    ExperimentalMaterial3ExpressiveApi::class
+)
 
 package org.michaelbel.cutouts.sample02waterfall
 
@@ -32,7 +35,9 @@ import org.michaelbel.cutouts.SectionLabel
 fun Sample02Screen(
     onBack: () -> Unit
 ) {
-    BackHandler(onBack = onBack)
+    BackHandler(
+        onBack = onBack
+    )
 
     val density = LocalDensity.current
     val layoutDirection = LocalLayoutDirection.current
@@ -54,7 +59,9 @@ fun Sample02Screen(
             TopAppBar(
                 title = { Text("Отступы водопада") },
                 navigationIcon = {
-                    IconButton(onClick = onBack) {
+                    IconButton(
+                        onClick = onBack
+                    ) {
                         Icon(
                             imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                             contentDescription = null
@@ -86,10 +93,10 @@ fun Sample02Screen(
                     )
                 )
             }
-
             item { SectionLabel("Отступы водопада") }
             item {
                 val topDp = with(density) { waterfallTop.toDp() }
+
                 ListItem(
                     headlineContent = { Text("Сверху") },
                     trailingContent = { Text("$waterfallTop px  ($topDp)") },
@@ -100,6 +107,7 @@ fun Sample02Screen(
             }
             item {
                 val bottomDp = with(density) { waterfallBottom.toDp() }
+
                 ListItem(
                     headlineContent = { Text("Снизу") },
                     trailingContent = { Text("$waterfallBottom px  ($bottomDp)") },
@@ -110,6 +118,7 @@ fun Sample02Screen(
             }
             item {
                 val leftDp = with(density) { waterfallLeft.toDp() }
+
                 ListItem(
                     headlineContent = { Text("Слева") },
                     trailingContent = { Text("$waterfallLeft px  ($leftDp)") },
@@ -120,6 +129,7 @@ fun Sample02Screen(
             }
             item {
                 val rightDp = with(density) { waterfallRight.toDp() }
+
                 ListItem(
                     headlineContent = { Text("Справа") },
                     trailingContent = { Text("$waterfallRight px  ($rightDp)") },
