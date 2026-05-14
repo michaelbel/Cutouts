@@ -1,4 +1,7 @@
-@file:OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3ExpressiveApi::class)
+@file:OptIn(
+    ExperimentalMaterial3Api::class,
+    ExperimentalMaterial3ExpressiveApi::class
+)
 
 package org.michaelbel.insets
 
@@ -46,7 +49,7 @@ import org.michaelbel.insets.sample06_Always.Sample06Screen
 import org.michaelbel.insets.sample07_SafeDrawing.Sample07Screen
 import org.michaelbel.insets.sample08_CutoutInsets.Sample08Screen
 
-class MainActivity : ComponentActivity() {
+class MainActivity: ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()

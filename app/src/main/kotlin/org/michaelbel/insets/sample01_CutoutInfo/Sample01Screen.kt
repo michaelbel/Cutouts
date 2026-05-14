@@ -87,7 +87,7 @@ fun Sample01Screen() {
                     )
                 )
             }
-            item { SectionLabel("Безопасные отступы выреза") }
+            item { SectionLabel("Отступы") }
             item {
                 val cutoutTopDp = with(density) { cutoutTop.toDp() }
                 ListItem(

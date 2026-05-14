@@ -71,7 +71,7 @@ fun Sample02Screen() {
                     )
                 )
             }
-            item { SectionLabel("Отступы водопада") }
+            item { SectionLabel("Отступы") }
             item {
                 val topDp = with(density) { waterfallTop.toDp() }
 

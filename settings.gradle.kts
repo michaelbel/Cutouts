@@ -19,5 +19,5 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "Cutouts"
+rootProject.name = "Insets"
 include(":app")

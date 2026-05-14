@@ -14,11 +14,11 @@ kotlin {
 }
 
 android {
-    namespace = "org.michaelbel.cutouts"
+    namespace = "org.michaelbel.insets"
     compileSdk = libs.versions.compile.sdk.get().toInt()
 
     defaultConfig {
-        applicationId = "org.michaelbel.cutouts"
+        applicationId = "org.michaelbel.insets"
         minSdk = libs.versions.min.sdk.get().toInt()
         targetSdk = libs.versions.target.sdk.get().toInt()
         versionCode = gitCommitsCount
@@ -47,7 +47,7 @@ android {
 }
 
 base {
-    archivesName.set("Cutouts-v${android.defaultConfig.versionName}(${android.defaultConfig.versionCode})")
+    archivesName.set("Insets-v${android.defaultConfig.versionName}(${android.defaultConfig.versionCode})")
 }
 
 dependencies {
