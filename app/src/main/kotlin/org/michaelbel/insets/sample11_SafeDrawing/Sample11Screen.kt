@@ -48,9 +48,7 @@ fun Sample11Screen() {
             TopAppBar(
                 title = { Text("Безопасная зона рисования") },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.primary,
-                    titleContentColor = MaterialTheme.colorScheme.onPrimary,
-                    scrolledContainerColor = MaterialTheme.colorScheme.primary
+                    scrolledContainerColor = MaterialTheme.colorScheme.surfaceContainer
                 ),
                 scrollBehavior = scrollBehavior
             )

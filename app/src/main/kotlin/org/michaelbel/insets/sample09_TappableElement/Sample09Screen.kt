@@ -48,9 +48,7 @@ fun Sample09Screen() {
             TopAppBar(
                 title = { Text("Тапабельные элементы") },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.primary,
-                    titleContentColor = MaterialTheme.colorScheme.onPrimary,
-                    scrolledContainerColor = MaterialTheme.colorScheme.primary
+                    scrolledContainerColor = MaterialTheme.colorScheme.surfaceContainer
                 ),
                 scrollBehavior = scrollBehavior
             )

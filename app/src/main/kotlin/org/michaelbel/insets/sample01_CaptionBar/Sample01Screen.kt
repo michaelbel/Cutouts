@@ -48,9 +48,7 @@ fun Sample01Screen() {
             TopAppBar(
                 title = { Text("Строка заголовка") },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.primary,
-                    titleContentColor = MaterialTheme.colorScheme.onPrimary,
-                    scrolledContainerColor = MaterialTheme.colorScheme.primary
+                    scrolledContainerColor = MaterialTheme.colorScheme.surfaceContainer
                 ),
                 scrollBehavior = scrollBehavior
             )

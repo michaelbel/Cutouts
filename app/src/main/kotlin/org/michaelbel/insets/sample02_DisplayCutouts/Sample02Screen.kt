@@ -52,9 +52,7 @@ fun Sample02Screen() {
             TopAppBar(
                 title = { Text("Информация о вырезе") },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.primary,
-                    titleContentColor = MaterialTheme.colorScheme.onPrimary,
-                    scrolledContainerColor = MaterialTheme.colorScheme.primary
+                    scrolledContainerColor = MaterialTheme.colorScheme.surfaceContainer
                 ),
                 scrollBehavior = scrollBehavior
             )
