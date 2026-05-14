@@ -1,4 +1,4 @@
-package org.michaelbel.insets.sample03_Default
+package org.michaelbel.insets.sample06_Never
 
 import android.app.Activity
 import android.view.WindowManager
@@ -18,19 +18,18 @@ import androidx.compose.runtime.DisposableEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
-import org.michaelbel.insets.BulletPoint
 import org.michaelbel.insets.ConstantBadge
 import org.michaelbel.insets.CutoutDiagram
 import org.michaelbel.insets.DescriptionCard
 import org.michaelbel.insets.WhenToUseCard
 
 @Composable
-fun Sample03Screen() {
+fun Sample06Screen() {
     val window = (LocalContext.current as Activity).window
     DisposableEffect(Unit) {
         val prev = window.attributes.layoutInDisplayCutoutMode
         window.attributes = window.attributes.apply {
-            layoutInDisplayCutoutMode = WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_DEFAULT
+            layoutInDisplayCutoutMode = WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_NEVER
         }
         onDispose {
             window.attributes = window.attributes.apply {
@@ -42,7 +41,7 @@ fun Sample03Screen() {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Режим по умолчанию") },
+                title = { Text("Режим «Никогда»") },
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = MaterialTheme.colorScheme.primary,
                     titleContentColor = MaterialTheme.colorScheme.onPrimary,
@@ -60,25 +59,26 @@ fun Sample03Screen() {
             ),
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
-            item { ConstantBadge("LAYOUT_IN_DISPLAY_CUTOUT_MODE_DEFAULT") }
+            item { ConstantBadge("LAYOUT_IN_DISPLAY_CUTOUT_MODE_NEVER") }
             item {
                 DescriptionCard(
-                    description = "Поведение по умолчанию. Окно может расширяться или не расширяться в зону " +
-                        "выреза дисплея в зависимости от конфигурации системы и окна. В портретном режиме при " +
-                        "видимых системных панелях контент отображается с отступом, чтобы не перекрывать вырез."
+                    description = "Окно никогда не расширяется в зону выреза дисплея. Окно всегда отображается " +
+                        "с отступами (letterbox или pillarbox), полностью избегая зоны выреза. " +
+                        "Контент никогда не отрисовывается за вырезом."
                 )
             }
             item {
                 WhenToUseCard(
                     items = listOf(
-                        "Портрет со строкой состояния: контент не заходит в вырез",
-                        "Альбомный режим со строкой состояния: контент избегает обеих сторон",
-                        "Полноэкранный режим (строка скрыта): контент может зайти в вырез",
-                        "Лучшая отправная точка для большинства приложений — явная обработка не нужна",
+                        "Интерфейс, который не может безопасно адаптироваться к вырезу",
+                        "Полноэкранное воспроизведение видео — letterbox предпочтительнее перекрытия контента",
+                        "Игры, где недопустим любой пиксель под вырезом",
+                        "Унаследованные приложения, не рассчитанные на edge-to-edge разметку",
+                        "Контент, который нельзя обрезать или перекрывать аппаратными элементами",
                     )
                 )
             }
-            item { CutoutDiagram(mode = "DEFAULT") }
+            item { CutoutDiagram(mode = "NEVER") }
         }
     }
 }

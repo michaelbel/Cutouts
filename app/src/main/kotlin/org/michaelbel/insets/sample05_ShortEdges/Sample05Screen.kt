@@ -1,4 +1,4 @@
-package org.michaelbel.insets.sample06_Always
+package org.michaelbel.insets.sample05_ShortEdges
 
 import android.app.Activity
 import android.view.WindowManager
@@ -24,12 +24,12 @@ import org.michaelbel.insets.DescriptionCard
 import org.michaelbel.insets.WhenToUseCard
 
 @Composable
-fun Sample06Screen() {
+fun Sample05Screen() {
     val window = (LocalContext.current as Activity).window
     DisposableEffect(Unit) {
         val prev = window.attributes.layoutInDisplayCutoutMode
         window.attributes = window.attributes.apply {
-            layoutInDisplayCutoutMode = WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_ALWAYS
+            layoutInDisplayCutoutMode = WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES
         }
         onDispose {
             window.attributes = window.attributes.apply {
@@ -41,7 +41,7 @@ fun Sample06Screen() {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Режим «Всегда»") },
+                title = { Text("Режим коротких краёв") },
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = MaterialTheme.colorScheme.primary,
                     titleContentColor = MaterialTheme.colorScheme.onPrimary,
@@ -59,26 +59,26 @@ fun Sample06Screen() {
             ),
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
-            item { ConstantBadge("LAYOUT_IN_DISPLAY_CUTOUT_MODE_ALWAYS") }
+            item { ConstantBadge("LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES") }
             item {
                 DescriptionCard(
-                    description = "Добавлено в API 30. Окно всегда расширяется в зону выреза дисплея, даже " +
-                        "в оконном режиме (не полноэкранном). Контент может отрисовываться под вырезом. " +
-                        "Необходимо использовать WindowInsets для отступа интерактивных элементов от выреза."
+                    description = "Окно может расширяться в зону выреза по коротким краям экрана (вверх и вниз " +
+                        "в портретном режиме). Контент может отрисовываться под вырезом. " +
+                        "Используйте WindowInsets.displayCutout, чтобы важные элементы интерфейса не попадали в эту зону."
                 )
             }
             item {
                 WhenToUseCard(
                     items = listOf(
-                        "Доступно с API 30 (Android 11) и выше — minSdk 34 гарантирует поддержку",
-                        "Контент заходит в зону выреза даже в режиме разделённого экрана / оконном режиме",
-                        "Самый агрессивный режим — контент всегда занимает весь экран включая зону выреза",
-                        "Всегда используйте WindowInsets.displayCutout для защиты нажимаемых элементов",
-                        "Полезно для отрисовки фонов, градиентов и декоративных элементов от края до края",
+                        "Портрет: контент может заходить за вырезы сверху и снизу",
+                        "Альбомный режим: контент заходит в вырез короткого края (обычно сверху)",
+                        "Применяется независимо от видимости системных панелей",
+                        "Всегда используйте отступ WindowInsets.displayCutout для интерактивных элементов",
+                        "Идеально для иммерсивного полноэкранного режима с чёлкой или отверстием в экране",
                     )
                 )
             }
-            item { CutoutDiagram(mode = "ALWAYS") }
+            item { CutoutDiagram(mode = "SHORT_EDGES") }
         }
     }
 }

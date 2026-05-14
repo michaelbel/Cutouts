@@ -1,4 +1,4 @@
-package org.michaelbel.insets.sample08_CutoutInsets
+package org.michaelbel.insets.sample09_CutoutInsets
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -27,7 +27,7 @@ import org.michaelbel.insets.BulletPoint
 import org.michaelbel.insets.ConstantBadge
 
 @Composable
-fun Sample08Screen() {
+fun Sample09Screen() {
 
     Scaffold(
         topBar = {

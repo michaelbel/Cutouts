@@ -1,4 +1,4 @@
-package org.michaelbel.insets.sample07_SafeDrawing
+package org.michaelbel.insets.sample08_SafeDrawing
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -40,7 +40,7 @@ import org.michaelbel.insets.InfoCard
 import org.michaelbel.insets.InfoRow
 
 @Composable
-fun Sample07Screen() {
+fun Sample08Screen() {
     val density = LocalDensity.current
     val safeDrawingInsets = WindowInsets.safeDrawing
     val topDp = with(density) { safeDrawingInsets.getTop(density).toDp() }

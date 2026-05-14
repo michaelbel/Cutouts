@@ -1,4 +1,4 @@
-package org.michaelbel.insets.sample04_ShortEdges
+package org.michaelbel.insets.sample04_Default
 
 import android.app.Activity
 import android.view.WindowManager
@@ -18,6 +18,7 @@ import androidx.compose.runtime.DisposableEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import org.michaelbel.insets.BulletPoint
 import org.michaelbel.insets.ConstantBadge
 import org.michaelbel.insets.CutoutDiagram
 import org.michaelbel.insets.DescriptionCard
@@ -29,7 +30,7 @@ fun Sample04Screen() {
     DisposableEffect(Unit) {
         val prev = window.attributes.layoutInDisplayCutoutMode
         window.attributes = window.attributes.apply {
-            layoutInDisplayCutoutMode = WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES
+            layoutInDisplayCutoutMode = WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_DEFAULT
         }
         onDispose {
             window.attributes = window.attributes.apply {
@@ -41,7 +42,7 @@ fun Sample04Screen() {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Режим коротких краёв") },
+                title = { Text("Режим по умолчанию") },
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = MaterialTheme.colorScheme.primary,
                     titleContentColor = MaterialTheme.colorScheme.onPrimary,
@@ -59,26 +60,25 @@ fun Sample04Screen() {
             ),
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
-            item { ConstantBadge("LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES") }
+            item { ConstantBadge("LAYOUT_IN_DISPLAY_CUTOUT_MODE_DEFAULT") }
             item {
                 DescriptionCard(
-                    description = "Окно может расширяться в зону выреза по коротким краям экрана (вверх и вниз " +
-                        "в портретном режиме). Контент может отрисовываться под вырезом. " +
-                        "Используйте WindowInsets.displayCutout, чтобы важные элементы интерфейса не попадали в эту зону."
+                    description = "Поведение по умолчанию. Окно может расширяться или не расширяться в зону " +
+                        "выреза дисплея в зависимости от конфигурации системы и окна. В портретном режиме при " +
+                        "видимых системных панелях контент отображается с отступом, чтобы не перекрывать вырез."
                 )
             }
             item {
                 WhenToUseCard(
                     items = listOf(
-                        "Портрет: контент может заходить за вырезы сверху и снизу",
-                        "Альбомный режим: контент заходит в вырез короткого края (обычно сверху)",
-                        "Применяется независимо от видимости системных панелей",
-                        "Всегда используйте отступ WindowInsets.displayCutout для интерактивных элементов",
-                        "Идеально для иммерсивного полноэкранного режима с чёлкой или отверстием в экране",
+                        "Портрет со строкой состояния: контент не заходит в вырез",
+                        "Альбомный режим со строкой состояния: контент избегает обеих сторон",
+                        "Полноэкранный режим (строка скрыта): контент может зайти в вырез",
+                        "Лучшая отправная точка для большинства приложений — явная обработка не нужна",
                     )
                 )
             }
-            item { CutoutDiagram(mode = "SHORT_EDGES") }
+            item { CutoutDiagram(mode = "DEFAULT") }
         }
     }
 }
