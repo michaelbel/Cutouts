@@ -7,6 +7,7 @@ package org.michaelbel.insets.sample02_DisplayCutouts
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.cutoutPath
 import androidx.compose.foundation.layout.displayCutout
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
@@ -39,6 +40,9 @@ fun Sample02Screen() {
     val cutoutRight = displayCutout.getRight(density, layoutDirection)
 
     val hasDisplayCutout = cutoutTop > 0 || cutoutBottom > 0 || cutoutLeft > 0 || cutoutRight > 0
+
+    val cutoutPath = WindowInsets.cutoutPath
+    val pathBounds = cutoutPath?.getBounds()
 
     val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()
 
@@ -127,6 +131,41 @@ fun Sample02Screen() {
                         containerColor = MaterialTheme.colorScheme.surfaceContainerHighest
                     )
                 )
+            }
+            item { SectionLabel("cutoutPath") }
+            item {
+                ListItem(
+                    headlineContent = { Text("Путь присутствует") },
+                    trailingContent = { Text(if (cutoutPath != null) "ДА" else "НЕТ") },
+                    colors = ListItemDefaults.colors(
+                        containerColor = MaterialTheme.colorScheme.surfaceContainerHighest
+                    )
+                )
+            }
+            item {
+                ListItem(
+                    headlineContent = { Text("Путь пуст") },
+                    trailingContent = { Text(if (cutoutPath?.isEmpty != false) "ДА" else "НЕТ") },
+                    colors = ListItemDefaults.colors(
+                        containerColor = MaterialTheme.colorScheme.surfaceContainerHighest
+                    )
+                )
+            }
+            if (pathBounds != null) {
+                item {
+                    ListItem(
+                        headlineContent = { Text("Границы пути") },
+                        trailingContent = {
+                            Text(
+                                "${pathBounds.left.toInt()},${pathBounds.top.toInt()} – " +
+                                    "${pathBounds.right.toInt()},${pathBounds.bottom.toInt()}"
+                            )
+                        },
+                        colors = ListItemDefaults.colors(
+                            containerColor = MaterialTheme.colorScheme.surfaceContainerHighest
+                        )
+                    )
+                }
             }
         }
     }
